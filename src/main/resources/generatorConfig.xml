@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <!-- 数据库驱动包路径 -->
+    <classPathEntry location="C:\Users\shanghucheng\.m2\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+
+    <context id="context1" targetRuntime="MyBatis3">
+        <!-- 运行环境配置 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!-- 生成注释配置 -->
+        <commentGenerator type="">
+             <!--是否取消注释 -->
+            <property name="suppressAllComments" value="true" />
+             <!--数据库注释支持 -->
+            <property name="addRemarkComments" value="false"/>
+             <!--时间格式设置 -->
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        </commentGenerator>
+        <!-- 连接数据库 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/water"
+                        userId="root"
+                        password="" />
+
+        <!-- 生成po类 -->
+        <javaModelGenerator targetPackage="com.water.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+        <!-- 生成xml映射文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+            <property name="isMergeable" value="false" />
+        </sqlMapGenerator>
+        <!-- 生成dao类 -->
+        <javaClientGenerator targetPackage="com.water.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 需要生产po类的表 -->
+        <!--<table tableName="nav" domainObjectName="Nav" >-->
+        <!--</table>-->
+        <!--<table tableName="water_info" domainObjectName="WaterInfo" >-->
+        <!--</table>-->
+        <!--<table tableName="address" domainObjectName="Address" >-->
+        <!--</table>-->
+        <table tableName="buy_car" domainObjectName="BuyCar" >
+        </table>
+        <!--<table tableName="comments" domainObjectName="Comments" >-->
+        <!--</table>-->
+        <!--<table tableName="order_detail" domainObjectName="OrderDetail" >-->
+        <!--</table>-->
+        <!--<table tableName="orders" domainObjectName="Orders" >-->
+        <!--</table>-->
+        <!--<table tableName="user" domainObjectName="User" >-->
+        <!--</table>-->
+        <!--<table tableName="water_info" domainObjectName="WaterInfo" >-->
+        <!--</table>-->
+        <!--<table tableName="water_type" domainObjectName="WaterType" >-->
+        <!--</table>-->
+        <!--<table tableName="business" domainObjectName="Business" >-->
+        <!--</table>-->
+        <!--<table tableName="tickets" domainObjectName="Tickets" >-->
+        <!--</table>-->
+        <!--<table tableName="water_info_imageurl" domainObjectName="WaterInfoImageurl" >-->
+        <!--</table>-->
+        <!--<table tableName="specs" domainObjectName="Specs" >-->
+        <!--</table>-->
+        <!--<table tableName="guigelist" domainObjectName="GuigeList" >-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>

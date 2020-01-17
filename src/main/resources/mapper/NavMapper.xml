@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.mapper.NavMapper">
+  <resultMap id="BaseResultMap" type="com.water.entity.Nav">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="imageUrl" jdbcType="VARCHAR" property="imageurl" />
+  </resultMap>
+
+  <select id="getImageUrl" resultType="String">
+    SELECT
+      imageUrl
+    FROM
+      nav
+  </select>
+
+</mapper>

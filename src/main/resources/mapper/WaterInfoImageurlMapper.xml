@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.mapper.WaterInfoImageurlMapper">
+  <resultMap id="BaseResultMap" type="com.water.entity.WaterInfoImageurl">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="water_id" jdbcType="INTEGER" property="waterId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="defalut" jdbcType="VARCHAR" property="defalut" />
+  </resultMap>
+
+  <select id="getWaterDetailImageUrl" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      url
+    FROM
+      water_info_imageurl
+    WHERE 1=1
+    <if test="id!=null and id!=''">
+      AND water_id =${id}
+    </if>
+  </select>
+</mapper>
