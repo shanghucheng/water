@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.water.mapper.OrdersdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.water.entity.Ordersdetail" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderId" property="orderid" jdbcType="INTEGER" />
+    <result column="waterId" property="waterid" jdbcType="INTEGER" />
+    <result column="goodsNum" property="goodsnum" jdbcType="VARCHAR" />
+    <result column="goodsPrice" property="goodsprice" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="insertOrderDetail">
+    INSERT INTO `water`.`ordersdetail` ( `orderId`, `waterId`, `goodsNum`, `goodsPrice` )
+    VALUES
+      ( #{orderid}, #{waterid}, #{goodsnum}, #{goodsprice} );
+  </select>
+
+  <select id="getOrderDetailByOrderId" parameterType="String" resultType="map">
+    SELECT
+      concat( ordersdetail.id, '' ) id,
+      concat( ordersdetail.orderId, '' ) orderId,
+      orders.totalPrice totalPrice,
+      orders.totalNum totalNum,
+      concat( ordersdetail.waterId, '' ) waterId,
+      ordersdetail.goodsNum num,
+      ordersdetail.goodsPrice price,
+      waterinfo.NAME name,
+      waterinfo.url
+    FROM
+      ordersdetail
+        LEFT JOIN waterinfo ON ordersdetail.waterId = waterinfo.id
+        LEFT JOIN orders ON ordersdetail.orderId = orders.id
+    WHERE
+      orderId = #{orderid}
+  </select>
+</mapper>

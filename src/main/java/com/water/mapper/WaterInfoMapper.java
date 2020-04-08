@@ -1,11 +1,15 @@
 package com.water.mapper;
 
-import java.util.List;
-import java.util.Map;
-
+import com.water.entity.WaterInfo;
 import org.apache.ibatis.annotations.Param;
+import tk.mybatis.mapper.common.Mapper;
 
-public interface WaterInfoMapper {
-    public List<Map<String,String>> getBaseWaterInfo();
-    public List<Map<String,String>> getWaterInfoDetail(@Param("id") String id);
+import java.util.List;
+
+public interface WaterInfoMapper extends Mapper<WaterInfo> {
+    public List<WaterInfo> getWaterByTypeId(@Param("watertype") String watertype);
+    public List<WaterInfo> getWaterInfo(@Param("type") String type,@Param("typeId") String typeId);
+    public WaterInfo getWaterInfoById(@Param("id") String id);
+    public void updateStockAndSalesvolume(@Param("id") String id,@Param("stock") String stock,@Param("salesvolume") String salesvolume);
+    public void updateState(@Param("id") String id,@Param("stock") String stock);
 }

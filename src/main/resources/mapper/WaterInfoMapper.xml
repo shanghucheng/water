@@ -1,60 +1,101 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.water.mapper.WaterInfoMapper">
-  <resultMap id="BaseResultMap" type="com.water.entity.WaterInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="price" jdbcType="VARCHAR" property="price" />
-    <result column="specs" jdbcType="VARCHAR" property="specs" />
-    <result column="water_num" jdbcType="VARCHAR" property="waterNum" />
-    <result column="addr" jdbcType="VARCHAR" property="addr" />
-    <result column="introction" jdbcType="VARCHAR" property="introction" />
-    <result column="business_id" jdbcType="INTEGER" property="businessId" />
-    <result column="sales_volume" jdbcType="VARCHAR" property="salesVolume" />
-    <result column="cost" jdbcType="VARCHAR" property="cost" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.water.mapper.WaterInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.water.entity.WaterInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="specs" property="specs" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="stock" property="stock" jdbcType="VARCHAR" />
+    <result column="salesVolume" property="salesvolume" jdbcType="VARCHAR" />
+    <result column="onLineDate" property="onlinedate" jdbcType="DATE" />
+    <result column="shareNum" property="sharenum" jdbcType="VARCHAR" />
+    <result column="waterType" property="watertype" jdbcType="VARCHAR" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
   </resultMap>
-
-  <select id="getBaseWaterInfo" resultType="map">
-    SELECT
-      CONCAT( water_info.id, '' ) id,
-      water_info.name,
-      water_info_imageurl.url imageUrl,
-      water_info.water_num waterNum,
-      CONCAT(MIN(cast(guigelist.price as signed)),'') price
-    FROM
-      water_info
-        INNER JOIN type_info ON type_info.water_id = water_info.id
-        INNER JOIN water_type ON type_info.type_id = water_type.id
-        INNER JOIN water_info_imageurl ON water_info_imageurl.water_id = water_info.id
-        INNER JOIN guigelist ON guigelist.water_id=water_info.id
+  <update id="updateState" parameterType="String">
+    UPDATE `water`.`waterinfo`
+    SET
+      `stock` = '0',
+      `salesVolume` = '0',
     WHERE
-      water_info_imageurl.defalut = 1
-      AND water_type.type = '桶装水'
-    GROUP BY water_info.name
-    ORDER BY id
-  </select>
-
-  <select id="getWaterInfoDetail" resultType="map">
+      `id` = #{id}
+  </update>
+  <update id="updateStockAndSalesvolume" parameterType="String">
+    UPDATE `water`.`waterinfo`
+    SET `stock` = #{stock},
+        `salesVolume` = #{salesvolume}
+    WHERE
+      `id` = #{id}
+  </update>
+  <select id="getWaterInfo" parameterType="String" resultMap="BaseResultMap">
     SELECT
-      water_info.name,
-      CONCAT(MIN(cast(guigelist.price as signed)),'') price,
-      water_info.water_num waterNum,
-      water_info.cost,
-      water_info.sales_volume salesVolume,
-      water_info_imageurl.url imageUrl,
-      water_type.type
+      id,
+      NAME,
+      url,
+      specs,
+      price,
+      discount,
+      stock,
+      salesVolume,
+      onLineDate,
+      shareNum,
+      waterType,
+      describes,
+      state
     FROM
-      water_info
-        INNER JOIN type_info ON type_info.water_id = water_info.id
-        INNER JOIN water_type ON type_info.type_id = water_type.id
-        INNER JOIN water_info_imageurl ON water_info_imageurl.water_id=water_info.id
-        INNER JOIN guigelist ON guigelist.water_id=water_info.id
-    WHERE 1=1
---     <if test="id!=null and id!=''">
-      AND water_info.id =1
---     </if>
-      AND water_info_imageurl.defalut=1
-      AND water_type.type = '桶装水'
+      waterinfo
+    WHERE
+      state = '0'
+    <if test="typeId!='' and typeId!=null">
+      and waterType =#{typeId}
+    </if>
+    <if test='type=="0"'>
+      ORDER BY
+      specs DESC,
+      salesVolume+0 DESC,
+      price * discount+0
+    </if>
+    <if test='type=="1"'>
+      ORDER BY salesVolume+0 DESC
+    </if>
+    <if test='type=="2"'>
+      ORDER BY price * discount+0
+    </if>
   </select>
-
+  <select id="getWaterInfoById" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      id,
+      NAME,
+      url,
+      specs,
+      price,
+      discount,
+      stock,
+      salesVolume,
+      onLineDate,
+      shareNum,
+      waterType,
+      describes,
+      state
+    FROM
+      waterinfo
+    WHERE
+      state = '0'
+      AND id =#{id}
+  </select>
+  <select id="getWaterByTypeId" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      *
+    FROM
+      `waterinfo`
+    WHERE
+      waterType =#{watertype}
+  </select>
 </mapper>

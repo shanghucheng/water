@@ -1,77 +1,221 @@
 package com.water.entity;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
-public class Address implements Serializable {
+public class Address {
+    /**
+     * 编号
+     */
+    @Id
     private Integer id;
 
-    private Integer userId;
+    /**
+     * 用户id
+     */
+    @Column(name = "userId")
+    private Integer userid;
 
-    private String name;
+    /**
+     * 用户名
+     */
+    @Column(name = "userName")
+    private String username;
 
-    private String tel;
+    /**
+     * 电话
+     */
+    @Column(name = "telNumber")
+    private String telnumber;
 
-    private String address;
+    /**
+     * 省
+     */
+    @Column(name = "provinceName")
+    private String provincename;
 
-    private String addressDetail;
+    /**
+     * 市
+     */
+    @Column(name = "cityName")
+    private String cityname;
 
+    /**
+     * 区
+     */
+    @Column(name = "countyName")
+    private String countyname;
+
+    /**
+     * 详细地址
+     */
+    @Column(name = "detailInfo")
+    private String detailinfo;
+
+    /**
+     * 是否是默认的1 是 0对否
+     */
+    @Column(name = "isDefault")
     private String isdefault;
 
-    private static final long serialVersionUID = 1L;
-
+    /**
+     * 获取编号
+     *
+     * @return id - 编号
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * 设置编号
+     *
+     * @param id 编号
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    /**
+     * 获取用户id
+     *
+     * @return userId - 用户id
+     */
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    /**
+     * 设置用户id
+     *
+     * @param userid 用户id
+     */
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
-    public String getName() {
-        return name;
+    /**
+     * 获取用户名
+     *
+     * @return userName - 用户名
+     */
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    /**
+     * 设置用户名
+     *
+     * @param username 用户名
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getTel() {
-        return tel;
+    /**
+     * 获取电话
+     *
+     * @return telNumber - 电话
+     */
+    public String getTelnumber() {
+        return telnumber;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
+    /**
+     * 设置电话
+     *
+     * @param telnumber 电话
+     */
+    public void setTelnumber(String telnumber) {
+        this.telnumber = telnumber;
     }
 
-    public String getAddress() {
-        return address;
+    /**
+     * 获取省
+     *
+     * @return provinceName - 省
+     */
+    public String getProvincename() {
+        return provincename;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    /**
+     * 设置省
+     *
+     * @param provincename 省
+     */
+    public void setProvincename(String provincename) {
+        this.provincename = provincename;
     }
 
-    public String getAddressDetail() {
-        return addressDetail;
+    /**
+     * 获取市
+     *
+     * @return cityName - 市
+     */
+    public String getCityname() {
+        return cityname;
     }
 
-    public void setAddressDetail(String addressDetail) {
-        this.addressDetail = addressDetail == null ? null : addressDetail.trim();
+    /**
+     * 设置市
+     *
+     * @param cityname 市
+     */
+    public void setCityname(String cityname) {
+        this.cityname = cityname;
     }
 
+    /**
+     * 获取区
+     *
+     * @return countyName - 区
+     */
+    public String getCountyname() {
+        return countyname;
+    }
+
+    /**
+     * 设置区
+     *
+     * @param countyname 区
+     */
+    public void setCountyname(String countyname) {
+        this.countyname = countyname;
+    }
+
+    /**
+     * 获取详细地址
+     *
+     * @return detailInfo - 详细地址
+     */
+    public String getDetailinfo() {
+        return detailinfo;
+    }
+
+    /**
+     * 设置详细地址
+     *
+     * @param detailinfo 详细地址
+     */
+    public void setDetailinfo(String detailinfo) {
+        this.detailinfo = detailinfo;
+    }
+
+    /**
+     * 获取是否是默认的1 是 0对否
+     *
+     * @return isDefault - 是否是默认的1 是 0对否
+     */
     public String getIsdefault() {
         return isdefault;
     }
 
+    /**
+     * 设置是否是默认的1 是 0对否
+     *
+     * @param isdefault 是否是默认的1 是 0对否
+     */
     public void setIsdefault(String isdefault) {
-        this.isdefault = isdefault == null ? null : isdefault.trim();
+        this.isdefault = isdefault;
     }
 }

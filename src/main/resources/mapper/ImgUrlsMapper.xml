@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.water.mapper.ImgUrlsMapper" >
+  <resultMap id="BaseResultMap" type="com.water.entity.ImgUrls" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="waterId" property="waterid" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getNav" resultMap="BaseResultMap">
+    SELECT
+      id,
+      waterId,
+      url,
+      LEVEL
+    FROM
+      imgurls
+    WHERE
+      LEVEL = "0"
+  </select>
+
+  <select id="getImagesByWaterId" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      id,
+      waterId,
+      url,
+      LEVEL
+    FROM
+      imgurls
+    WHERE
+      LEVEL = '1'
+      AND waterId =#{id}
+  </select>
+
+  <select id="getGoodDetailImg" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      id,
+      waterId,
+      url,
+      LEVEL
+    FROM
+      imgurls
+    WHERE
+      waterId =#{id}
+  </select>
+</mapper>

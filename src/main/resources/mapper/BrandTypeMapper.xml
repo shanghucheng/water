@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.water.mapper.BrandTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.water.entity.BrandType" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="typeId" property="typeid" jdbcType="INTEGER" />
+    <result column="categoryId" property="categoryid" jdbcType="INTEGER" />
+    <result column="brandId" property="brandid" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getCategoryId" resultMap="BaseResultMap">
+    SELECT DISTINCT
+      categoryId
+    FROM
+      `brandtype`
+  </select>
+</mapper>
