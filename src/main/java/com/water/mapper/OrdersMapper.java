@@ -13,4 +13,5 @@ public interface OrdersMapper extends Mapper<Orders> {
     public Orders getOrderById(@Param("id") String id);
     public List<Map<String,String>> getOrderByState();
     public void updateOrderStateById(@Param("orderstate") String orderstate,@Param("id") String id);
+    public List<Map<String,String>> getRiderOrderDetailById(@Param("orderid") String orderid,@Param("riderid") String riderid);
 }

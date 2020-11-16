@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.water.mapper.RiderMapper" >
+  <resultMap id="BaseResultMap" type="com.water.entity.Rider" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="passwrod" property="passwrod" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="cardId" property="cardid" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getRiderByTel" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      *
+    FROM
+      `rider`
+    WHERE
+      tel = #{tel}
+  </select>
+  <insert id="insertRider" parameterType="com.water.entity.Rider" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO `water`.`rider` ( `name`, `passwrod`, `tel`,integral)
+    VALUES
+      ( #{name}, #{passwrod}, #{tel},'0');
+  </insert>
+  <select id="getRiderByTelPassword" parameterType="String" resultMap="BaseResultMap">
+    SELECT
+      *
+    FROM
+      `rider`
+    WHERE
+      tel = #{tel}
+      AND passwrod =#{passwrod}
+  </select>
+  <select id="getRiderRank" resultMap="BaseResultMap">
+    SELECT
+      *
+    FROM
+      `rider`
+    ORDER BY
+      integral+0 DESC
+  </select>
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.water.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="dept_id" jdbcType="VARCHAR" property="deptId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="user_id_create" jdbcType="BIGINT" property="userIdCreate" />
+    <result column="gmt_create" jdbcType="VARCHAR" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="VARCHAR" property="gmtModified" />
+    <result column="sex" jdbcType="BIGINT" property="sex" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="pic_id" jdbcType="BIGINT" property="picId" />
+    <result column="live_address" jdbcType="VARCHAR" property="liveAddress" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="is_admin" jdbcType="VARCHAR" property="isAdmin" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="validate_code" jdbcType="VARCHAR" property="validateCode" />
+    <result column="last_time" jdbcType="VARCHAR" property="lastTime" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.water.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="dept_id" jdbcType="VARCHAR" property="deptId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="user_id_create" jdbcType="BIGINT" property="userIdCreate" />
+    <result column="gmt_create" jdbcType="VARCHAR" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="VARCHAR" property="gmtModified" />
+    <result column="sex" jdbcType="BIGINT" property="sex" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="pic_id" jdbcType="BIGINT" property="picId" />
+    <result column="live_address" jdbcType="VARCHAR" property="liveAddress" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="is_admin" jdbcType="VARCHAR" property="isAdmin" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="validate_code" jdbcType="VARCHAR" property="validateCode" />
+    <result column="last_time" jdbcType="VARCHAR" property="lastTime" />
+  </resultMap>
+</mapper>

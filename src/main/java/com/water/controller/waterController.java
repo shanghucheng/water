@@ -306,15 +306,125 @@ public class waterController {
 
     /**
      * 更新订单状态
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "/updateOrderStateById", method = RequestMethod.GET)
     @ResponseBody
-    public boolean updateOrderStateById(@RequestParam("orderstate")String orderstate,@RequestParam("id")String id) {
-        ordersBiz.updateOrderStateById(orderstate,id);
+    public boolean updateOrderStateById(@RequestParam("orderstate") String orderstate, @RequestParam("id") String id) {
+        ordersBiz.updateOrderStateById(orderstate, id);
         return true;
     }
 
+    /**
+     * ************************************骑手************************************************
+     */
+
+    @Autowired
+    private RiderOrderBiz riderOrderBiz;
+
+    @Autowired
+    private RiderBiz riderBiz;
+
+    /**
+     * 获取骑手订单
+     *
+     * @return
+     */
+    @RequestMapping(value = "/getRiderOrderAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Map<String, String>> getRiderOrderAll(@RequestParam(value = "id") String id,@RequestParam(value = "orderstate", required = false) String orderstate) {
+        List<Map<String, String>> getRiderOrderAll = riderOrderBiz.getRiderOrderAll(id,orderstate);
+        return getRiderOrderAll;
+    }
+
+    /**
+     * 添加骑手接单
+     *
+     * @param rigerid
+     * @param orderid
+     * @return
+     */
+    @RequestMapping(value = "/insertRiderOrder", method = RequestMethod.GET)
+    @ResponseBody
+    public boolean insertRiderOrder(@RequestParam("rigerid") String rigerid, @RequestParam("orderid") String orderid) {
+        riderOrderBiz.insertRiderOrder(rigerid, orderid);
+        return true;
+    }
+
+    /**
+     * 获取骑手的订单详情
+     *
+     * @param orderid
+     * @param riderid
+     * @return
+     */
+    @RequestMapping(value = "/getRiderOrderDetailById", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Map<String, String>> getRiderOrderDetailById(@RequestParam("orderid") String orderid, @RequestParam("riderid") String riderid) {
+        List<Map<String, String>> getRiderOrderDetailById = ordersBiz.getRiderOrderDetailById(orderid, riderid);
+        return getRiderOrderDetailById;
+    }
+
+    /**
+     * 判断手机号是否被注册
+     *
+     * @param tel
+     * @return
+     */
+    @RequestMapping(value = "/getRiderByTel", method = RequestMethod.GET)
+    @ResponseBody
+    public String getRiderByTel(@RequestParam("tel") String tel) {
+        return riderBiz.getRiderByTel(tel);
+    }
+
+    /**
+     * 添加骑手
+     *
+     * @param name
+     * @param passwrod
+     * @param tel
+     * @return
+     */
+    @RequestMapping(value = "/insertRider", method = RequestMethod.GET)
+    @ResponseBody
+    public int insertRider(@RequestParam("name") String name, @RequestParam("passwrod") String passwrod, @RequestParam("tel") String tel) {
+        return riderBiz.insertRider(name, passwrod, tel);
+    }
+
+    /**
+     * 骑手登录
+     * @param tel
+     * @param passwrod
+     * @return
+     */
+    @RequestMapping(value = "/getRiderByTelPassword", method = RequestMethod.GET)
+    @ResponseBody
+    public Rider getRiderByTelPassword(@RequestParam("tel") String tel, @RequestParam("passwrod") String passwrod) {
+        return riderBiz.getRiderByTelPassword(tel, passwrod);
+    }
+
+    /**
+     * 获取骑手得月，周订单
+     * @param id
+     * @param sign
+     * @return
+     */
+    @RequestMapping(value = "/getRiderOrderById", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Map<String,String>> getRiderOrderById(@RequestParam("id") String id,@RequestParam("sign") String sign){
+        return riderOrderBiz.getRiderOrderById(id, sign);
+    }
+
+    /**
+     * 获取骑手排名
+     * @return
+     */
+    @RequestMapping(value = "/getRiderRank", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Rider> getRiderRank(){
+        return riderBiz.getRiderRank();
+    }
 
 }

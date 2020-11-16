@@ -29,10 +29,10 @@
 
         <javaClientGenerator targetPackage="com.water.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
-        <!--<table tableName="brandtype" domainObjectName="BrandType">-->
-        <!--</table><table tableName="waterbrand" domainObjectName="WaterBrand">-->
-        <!--</table><table tableName="watertype" domainObjectName="WaterType">-->
-        <!--</table>-->
+        <table tableName="deliver_order" domainObjectName="DeliverOrder"></table>
+        <table tableName="deliver_order_item" domainObjectName="DeliverOrderItem"></table>
+        <table tableName="scan_goods" domainObjectName="ScanGoods"></table>
+        <table tableName="sys_user" domainObjectName="SysUser"></table>
 
     </context>
 </generatorConfiguration>

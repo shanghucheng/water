@@ -34,7 +34,7 @@
             AND orderState =#{orderstate}
         </if>
         ORDER BY
-        date_format(orderDate, '%Y%m%d%H%i%s')
+        id DESC
     </select>
 
     <select id="getOrderById" parameterType="String" resultMap="BaseResultMap">
@@ -80,4 +80,36 @@
         WHERE
             `id` = #{id}
     </update>
+
+    <select id="getRiderOrderDetailById" parameterType="String" resultType="map">
+        SELECT
+            concat( orders.id, '' ) orderId,
+            concat( orders.userId, '' ) userId,
+            concat( orders.addressId, '' ) addressId,
+            orders.totalNum,
+            orders.totalPrice,
+            orders.orderDate,
+            riderorder.orderTime,
+            orders.orderState,
+            concat(TIMESTAMPDIFF( MINUTE, ( DATE_FORMAT( orders.orderDate, '%Y-%m-%d %H:%i' ) ), ( DATE_FORMAT( riderorder.orderTime, '%Y-%m-%d %H:%i' ) ) ),'') sendTime,
+            waterinfo.name,
+            waterinfo.url,
+            ordersdetail.goodsNum,
+            ordersdetail.goodsPrice,
+            address.userName,
+            address.telNumber,
+            address.provinceName,
+            address.cityName,
+            address.countyName,
+            address.detailInfo
+        FROM
+            orders
+                LEFT JOIN riderorder ON riderorder.orderId = orders.id
+                LEFT JOIN ordersdetail ON ordersdetail.orderId = orders.id
+                LEFT JOIN waterinfo ON ordersdetail.waterId = waterinfo.id
+                LEFT JOIN address ON address.id = orders.addressId
+        WHERE
+            orders.id = #{orderid}
+          AND riderorder.riderId =#{riderid}
+    </select>
 </mapper>

@@ -16,7 +16,7 @@ public class OrdersBiz {
     private OrdersMapper mapper;
 
     public int insertOrder(String userid,String addressid,String totalnum,String totalprice,String orderstate){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
         Orders orders = new Orders();
         orders.setUserid(Integer.parseInt(userid));
@@ -45,6 +45,10 @@ public class OrdersBiz {
 
     public void updateOrderStateById(String orderstate,String id){
         mapper.updateOrderStateById(orderstate, id);
+    }
+
+    public List<Map<String,String>> getRiderOrderDetailById(String orderid,String riderid){
+        return mapper.getRiderOrderDetailById(orderid, riderid);
     }
 
 

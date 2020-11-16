@@ -27,11 +27,18 @@
       ordersdetail.goodsNum num,
       ordersdetail.goodsPrice price,
       waterinfo.NAME name,
-      waterinfo.url
+      waterinfo.url,
+      address.userName,
+      address.telNumber,
+      address.provinceName,
+      address.cityName,
+      address.countyName,
+      address.detailInfo
     FROM
       ordersdetail
         LEFT JOIN waterinfo ON ordersdetail.waterId = waterinfo.id
         LEFT JOIN orders ON ordersdetail.orderId = orders.id
+        LEFT JOIN address ON orders.addressId = address.id
     WHERE
       orderId = #{orderid}
   </select>
