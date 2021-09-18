@@ -6,27 +6,6 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="deliver_order_pk" jdbcType="INTEGER" property="deliverOrderPk" />
-    <result column="inv_allot_line_pk" jdbcType="INTEGER" property="invAllotLinePk" />
-    <result column="line_number" jdbcType="INTEGER" property="lineNumber" />
-    <result column="inv_allot_header_pk" jdbcType="INTEGER" property="invAllotHeaderPk" />
-    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
-    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
-    <result column="uom_code_name" jdbcType="VARCHAR" property="uomCodeName" />
-    <result column="lot_number" jdbcType="VARCHAR" property="lotNumber" />
-    <result column="qty" jdbcType="DOUBLE" property="qty" />
-    <result column="is_post_back" jdbcType="INTEGER" property="isPostBack" />
-    <result column="scaned_conut" jdbcType="DOUBLE" property="scanedConut" />
-    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-    <result column="modify_user" jdbcType="VARCHAR" property="modifyUser" />
-    <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
-  </resultMap>
-  <resultMap id="BaseResultMap" type="com.water.entity.DeliverOrderItem">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="deliver_order_pk" jdbcType="VARCHAR" property="deliverOrderPk" />
     <result column="inv_allot_line_pk" jdbcType="VARCHAR" property="invAllotLinePk" />
     <result column="inv_allot_header_pk" jdbcType="VARCHAR" property="invAllotHeaderPk" />

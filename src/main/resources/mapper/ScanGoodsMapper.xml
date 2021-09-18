@@ -6,22 +6,6 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="deliver_order_item_id" jdbcType="INTEGER" property="deliverOrderItemId" />
-    <result column="goods_unique_code" jdbcType="VARCHAR" property="goodsUniqueCode" />
-    <result column="material_code" jdbcType="VARCHAR" property="materialCode" />
-    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode" />
-    <result column="stream_code" jdbcType="VARCHAR" property="streamCode" />
-    <result column="check_code" jdbcType="VARCHAR" property="checkCode" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
-    <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
-    <result column="modify_user" jdbcType="VARCHAR" property="modifyUser" />
-  </resultMap>
-  <resultMap id="BaseResultMap" type="com.water.entity.ScanGoods">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="material_code" jdbcType="VARCHAR" property="materialCode" />
     <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode" />
     <result column="stream_code" jdbcType="VARCHAR" property="streamCode" />

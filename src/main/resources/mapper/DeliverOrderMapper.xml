@@ -15,27 +15,6 @@
     <result column="subinv_name" jdbcType="VARCHAR" property="subinvName" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
-    <result column="back_status" jdbcType="BIT" property="backStatus" />
-    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-    <result column="modify_user" jdbcType="VARCHAR" property="modifyUser" />
-    <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
-  </resultMap>
-  <resultMap id="BaseResultMap" type="com.water.entity.DeliverOrder">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="inv_allot_header_pk" jdbcType="INTEGER" property="invAllotHeaderPk" />
-    <result column="allot_type" jdbcType="VARCHAR" property="allotType" />
-    <result column="doc_number" jdbcType="VARCHAR" property="docNumber" />
-    <result column="allot_date" jdbcType="DATE" property="allotDate" />
-    <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
-    <result column="out_sec_inv_name" jdbcType="VARCHAR" property="outSecInvName" />
-    <result column="subinv_name" jdbcType="VARCHAR" property="subinvName" />
-    <result column="status" jdbcType="VARCHAR" property="status" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="organization_id" jdbcType="VARCHAR" property="organizationId" />
     <result column="back_status" jdbcType="BIT" property="backStatus" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
